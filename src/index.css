@@ -211,7 +211,7 @@ button {
     margin-inline: auto;
     flex-grow: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 
     & > div {
       cursor: pointer;
