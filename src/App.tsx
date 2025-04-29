@@ -35,6 +35,10 @@ function App() {
     url: "https://baboolachat.netlify.app",
     title: "AI Chat",
     icon: "https://baboolachat.netlify.app/logo.png",
+    preferredWindowSize: {
+      width: 500,
+      height: 500,
+    },
   };
   const CALCULATOR = {
     url: "https://baboolacalculator.netlify.app",
@@ -90,6 +94,11 @@ function App() {
     isLink: true,
     icon: "https://baboolanotes.netlify.app/Picture1.png",
   };
+  const TEXT_EDITOR = {
+    url: "https://baboolatexteditor.netlify.app",
+    title: "Text Editor",
+    icon: "https://baboolatexteditor.netlify.app/icon.hires.png",
+  };
   const MUSIC = {
     url: "https://baboolamusicplayer.netlify.app",
     title: "Music Player",
@@ -104,6 +113,15 @@ function App() {
     url: "https://baboolawebnavigator.netlify.app",
     title: "Web Navigator",
     icon: "https://baboolawebnavigator.netlify.app/icon.png",
+  };
+  const CAMERA = {
+    url: "https://baboolacamera.netlify.app",
+    title: "Camera",
+    icon: "https://baboolacamera.netlify.app/camera.png",
+    preferredWindowSize: {
+      width: 901,
+      height: 600,
+    },
   };
 
   const SETTINGS: AppObject = {
@@ -291,12 +309,14 @@ function App() {
             UNIT_CONVERTER,
             SHEETS,
             NOTES,
+            TEXT_EDITOR,
             SIMPLY_PRESENT,
             MUSIC,
             PASSWORD_GENERATOR,
             WEB_NAVIGATOR,
             SETTINGS,
             TERMINAL,
+            CAMERA,
           ]}
         />
       </Show>

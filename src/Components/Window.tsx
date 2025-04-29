@@ -142,6 +142,7 @@ export function Window(props: {
                 }
               >
                 <iframe
+                  allow="camera; microphone"
                   style={{
                     "z-index": isDragging[0]() ? "-1" : "2",
                   }}
