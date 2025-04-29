@@ -152,3 +152,13 @@ export function applyWallpaper() {
     document.body.style.backgroundImage = `url('${wallpapers[0]}')`;
   }
 }
+
+export function downloadTextFile(filename: string, content: string) {
+  const element = document.createElement("a");
+  const blob = new Blob([content], { type: "text/plain" });
+  element.href = URL.createObjectURL(blob);
+  element.download = filename;
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}

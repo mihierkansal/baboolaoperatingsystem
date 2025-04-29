@@ -631,11 +631,35 @@ input {
   }
 
   & .fullwin-termapp {
+    padding: 0.5rem;
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
+    display: flex;
     background: black;
+    flex-direction: column;
+    & > textarea {
+      flex-grow: 1;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: white;
+      padding-block: 0.25rem;
+      resize: none;
+    }
   }
+}
+
+.greybg {
+  background: lightgrey;
+  color: black;
+}
+
+.kbdlist {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }

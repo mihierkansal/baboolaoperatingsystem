@@ -52,7 +52,7 @@ function App() {
   };
   const SIMPLY_PRESENT = {
     url: "https://mihierkansal.github.io/simply-present",
-    title: "SimplyPresent",
+    title: "PDF, Image, Video Viewer",
     icon: "https://mihierkansal.github.io/simply-present/icon.png",
     preferredWindowSize: {
       width: 1000,
