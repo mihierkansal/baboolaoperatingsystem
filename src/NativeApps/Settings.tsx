@@ -204,6 +204,12 @@ export function Settings() {
 
         <h4>Baboola OS</h4>
         <h5>Version 1.0.0</h5>
+        <p>
+          {" "}
+          <a target="_blank" href="https://github.com/mihierkansal">
+            Creator's Github
+          </a>
+        </p>
         <p>Copyright 2025 Mihier Kansal &lt;mihierkansal@outlook.com&gt;</p>
 
         <p>

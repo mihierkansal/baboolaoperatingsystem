@@ -179,6 +179,7 @@ button {
   &.maximized {
     left: 0 !important;
     width: 100vw !important;
+    border-radius: 0;
   }
 }
 .hidden {
@@ -223,10 +224,12 @@ button {
       position: relative;
       gap: 1rem;
       border-radius: 1rem;
+      background: linear-gradient(to bottom, #333, #222);
       box-shadow: inset 0 0 0 transparent, inset 0 0 0 transparent,
         0 -3px 2px #0002, 0 3px 2px #fff1, inset 0 -2px 14px #0002,
-        inset 0 3px 2px #fff1;
+        inset 0 0px 22px #0003;
       transition: all 0.1s;
+      border: 1px solid #333;
       & img {
         height: 2rem;
         transition: all 0.1s;
@@ -246,7 +249,7 @@ button {
       &:active:not(:has(button:active)) {
         box-shadow: inset 0 -2px 4px #4488aa22, inset 0 0 45px #0006,
           0 -3px 2px #0002, 0 3px 2px #fff1, inset 0 -2px 14px #0002,
-          inset 0 3px 2px #fff1;
+          inset 0 3px 2px #0003;
         gap: 0.8rem;
         & > * {
           scale: 0.9;
@@ -666,4 +669,11 @@ input {
   gap: 0.25rem;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
+}
+
+a {
+  color: lightblue;
+  &:visited {
+    color: plum;
+  }
 }

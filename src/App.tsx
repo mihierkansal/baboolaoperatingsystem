@@ -109,6 +109,11 @@ function App() {
     title: "Password Generator",
     icon: "https://baboolapasswordgenerator.netlify.app/key.svg",
   };
+  const DICTIONARY = {
+    url: "https://babooladictionary.netlify.app",
+    title: "Dictionary",
+    icon: "https://babooladictionary.netlify.app/favicon.png",
+  };
   const WEB_NAVIGATOR = {
     url: "https://baboolawebnavigator.netlify.app",
     title: "Web Navigator",
@@ -310,6 +315,7 @@ function App() {
             SHEETS,
             NOTES,
             TEXT_EDITOR,
+            DICTIONARY,
             SIMPLY_PRESENT,
             MUSIC,
             PASSWORD_GENERATOR,
