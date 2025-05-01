@@ -38,7 +38,8 @@ body {
   user-select: none;
 }
 
-button {
+button,
+::-webkit-file-upload-button {
   font-family: inherit;
   font-size: 1.1rem;
   padding-inline: 1.3rem;
@@ -88,10 +89,15 @@ button {
     min-width: 3.5rem;
   }
 }
-
+::-webkit-file-upload-button {
+  display: inline-block;
+  margin-right: 1rem;
+}
 .window {
   padding: 0.5rem;
-  background: #222;
+  background: linear-gradient(to bottom, #333333, #222222);
+
+  /* background: #222; */
   color: #bbb;
   box-shadow: 0 3px 6px #0005, inset 0 2px 3px #fff3;
   border-radius: 0.5rem;
@@ -192,18 +198,21 @@ button {
   position: fixed;
   left: 0;
   top: 0;
-  background: linear-gradient(to bottom, #333, #222);
+  background: linear-gradient(to bottom, #333333f9, #222222f9);
   height: 100vh;
   width: 100vw;
   color: white;
   padding: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  overflow: auto;
   & .header {
-    width: 100%;
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
   }
   & .appgrid {
     display: grid;
@@ -212,9 +221,9 @@ button {
     margin-inline: auto;
     flex-grow: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 
     & > div {
+      height: 8rem;
       cursor: pointer;
       display: flex;
       user-select: none;
@@ -224,7 +233,7 @@ button {
       position: relative;
       gap: 1rem;
       border-radius: 1rem;
-      background: linear-gradient(to bottom, #333, #222);
+      background: linear-gradient(to bottom, #3336, #2226);
       box-shadow: inset 0 0 0 transparent, inset 0 0 0 transparent,
         0 -3px 2px #0002, 0 3px 2px #fff1, inset 0 -2px 14px #0002,
         inset 0 0px 22px #0003;
@@ -252,19 +261,25 @@ button {
           inset 0 3px 2px #0003;
         gap: 0.8rem;
         & > * {
-          scale: 0.9;
+          transform: scale(0.9);
         }
       }
 
-      & > .pinbtn {
+      & > .appbtns {
+        transform-origin: bottom right;
         position: absolute;
         left: 1rem;
         top: 1rem;
-        padding-inline: 0;
-        min-width: 0;
-        width: 2.25rem;
-        height: 2.25rem;
-        font-size: 0.85rem;
+        display: flex;
+        gap: 0.5rem;
+
+        & > .action {
+          padding-inline: 0;
+          min-width: 0;
+          width: 2.25rem;
+          height: 2.25rem;
+          font-size: 0.85rem;
+        }
       }
     }
   }
@@ -425,14 +440,16 @@ button {
   }
 }
 
-.settings-container {
+.settings-container,
+.app-container {
   display: flex;
   height: 100%;
   width: 100%;
   background: #252525;
   color: white;
   overflow: auto;
-  & > .settings-menu {
+  & > .settings-menu,
+  & > .app-menu {
     min-width: 14rem;
     width: 14rem;
     padding: 0.5rem;
@@ -471,7 +488,8 @@ button {
   }
 }
 
-.settings-main {
+.settings-main,
+.app-main {
   flex-grow: 1;
   padding: 1rem;
 
@@ -676,4 +694,43 @@ a {
   &:visited {
     color: plum;
   }
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  z-index: 99999;
+  background: linear-gradient(to bottom, #333, #222);
+  border-radius: 1.5rem;
+  box-shadow: inset 0 3px 3px #fff4, inset 0 0 4px black, 0 4px 4px #0004,
+    0 0 0 9000px #fff1;
+
+  color: white;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  & p {
+    margin-bottom: 1rem;
+  }
+
+  & > button {
+    min-width: 13rem;
+  }
+}
+
+.checkmark {
+  height: 3rem;
+  width: 3rem;
+  margin-block: 1rem;
+  display: grid;
+  font-size: 2rem;
+  place-items: center;
+  background: green;
+  border-radius: 999rem;
 }

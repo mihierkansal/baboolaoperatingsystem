@@ -6,11 +6,10 @@ export interface AppObject {
   title: string;
   icon: string;
   isLink?: boolean;
+  isCustom?: boolean;
   preferredWindowSize?: { width: number; height: number };
 
-  /** Either URL or MainViewJSX*/
   url?: string;
-  /** Either URL or MainViewJSX*/
   mainViewNativeApp?: NativeApp;
   nativeAppProps?: any;
 }
@@ -22,6 +21,7 @@ export interface WindowObject extends AppObject {
 export enum NativeApp {
   Settings,
   Terminal,
+  Installer,
 }
 
 export interface UserProfile {
@@ -29,4 +29,5 @@ export interface UserProfile {
   profilePic?: string;
   passwordHash?: string;
   wallpaper?: string;
+  customApps?: AppObject[];
 }

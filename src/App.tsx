@@ -139,6 +139,16 @@ function App() {
     title: "System",
     icon: "/gear.svg",
   };
+  const APP_INSTALLER: AppObject = {
+    mainViewNativeApp: NativeApp.Installer,
+
+    preferredWindowSize: {
+      width: 901,
+      height: 500,
+    },
+    title: "App Installer",
+    icon: "/installer.png",
+  };
   const TERMINAL: AppObject = {
     mainViewNativeApp: NativeApp.Terminal,
 
@@ -303,7 +313,7 @@ function App() {
           visibility={launchpadOpen}
           openWindows={openWindows}
           pinnedApps={pinned}
-          apps={[
+          preinstalledApps={[
             PAINT,
             SOUND_REC,
             CHAT,
@@ -322,6 +332,7 @@ function App() {
             WEB_NAVIGATOR,
             SETTINGS,
             TERMINAL,
+            APP_INSTALLER,
             CAMERA,
           ]}
         />
