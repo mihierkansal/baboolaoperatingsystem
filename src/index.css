@@ -224,8 +224,10 @@ button,
     width: 85vw;
     margin-inline: auto;
     flex-grow: 1;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    @media (min-width: 1500px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
     & > div {
       height: 8rem;
       cursor: pointer;
@@ -282,14 +284,15 @@ button,
         left: 1rem;
         top: 1rem;
         display: flex;
-        gap: 0.5rem;
+        flex-direction: column;
+        gap: 1rem;
 
         & > .action {
           padding-inline: 0;
           min-width: 0;
-          width: 2.25rem;
-          height: 2.25rem;
-          font-size: 0.85rem;
+          width: 2rem;
+          height: 2rem;
+          font-size: 0.7rem;
         }
       }
     }
