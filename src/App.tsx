@@ -146,6 +146,15 @@ function App() {
       height: 600,
     },
   };
+  const SCREEN_RECORDER = {
+    url: "https://baboolascreenrecorder.netlify.app",
+    title: "Screen Recorder",
+    icon: "https://baboolascreenrecorder.netlify.app/favicon.hires.png",
+    preferredWindowSize: {
+      width: 500,
+      height: 500,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -351,6 +360,7 @@ function App() {
             WEB_NAVIGATOR,
             TEXT_TO_SPEECH,
             SPEECH_TO_TEXT,
+            SCREEN_RECORDER,
             CAMERA,
             SETTINGS,
             APP_INSTALLER,
