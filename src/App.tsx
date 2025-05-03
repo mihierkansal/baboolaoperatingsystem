@@ -160,8 +160,8 @@ function App() {
     title: "Calendar",
     icon: "https://baboolacalendar.netlify.app/favicon.hires.png",
     preferredWindowSize: {
-      width: 901,
-      height: 600,
+      width: 1001,
+      height: 610,
     },
   };
 
