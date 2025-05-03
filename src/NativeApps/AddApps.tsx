@@ -17,7 +17,10 @@ export function AppInstaller() {
             due to CORS restrictions, some websites may not work when installed
             as an app directly in BaboolaOS. If that is the case, please
             uninstall and reinstall the app using the <i>Save as Link</i> option
-            and the app will now open as a link.
+            and the app will now open as a link. Another option is to install
+            the Framer
+            (https://chromewebstore.google.com/detail/framer-make-iframes-possi/adohambhfalbpaenaclmhhjhilmakmoo)
+            extension.
           </p>
 
           <label>

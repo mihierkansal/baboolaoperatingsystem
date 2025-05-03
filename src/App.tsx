@@ -128,6 +128,24 @@ function App() {
       height: 600,
     },
   };
+  const TEXT_TO_SPEECH = {
+    url: "https://baboolatexttospeech.netlify.app",
+    title: "Text To Speech",
+    icon: "https://baboolatexttospeech.netlify.app/favicon.png",
+    preferredWindowSize: {
+      width: 901,
+      height: 600,
+    },
+  };
+  const SPEECH_TO_TEXT = {
+    url: "https://baboolaspeechtotext.netlify.app",
+    title: "Speech to Text",
+    icon: "https://baboolaspeechtotext.netlify.app/favicon.hires.png",
+    preferredWindowSize: {
+      width: 901,
+      height: 600,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -212,7 +230,7 @@ function App() {
                 </div>
                 <div class="battery-end"></div>
               </div>
-              <div>{batteryLevel[0]() * 100 + "%"} Charged</div>
+              <div>{Math.round(batteryLevel[0]() * 100) + "%"} Charged</div>
             </div>
           </div>
         </Show>
@@ -320,6 +338,7 @@ function App() {
             CALCULATOR,
             TRANSLATOR,
             WEATHER,
+            TERMINAL,
             CLOCK,
             UNIT_CONVERTER,
             SHEETS,
@@ -330,10 +349,11 @@ function App() {
             MUSIC,
             PASSWORD_GENERATOR,
             WEB_NAVIGATOR,
-            SETTINGS,
-            TERMINAL,
-            APP_INSTALLER,
+            TEXT_TO_SPEECH,
+            SPEECH_TO_TEXT,
             CAMERA,
+            SETTINGS,
+            APP_INSTALLER,
           ]}
         />
       </Show>
