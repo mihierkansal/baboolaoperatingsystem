@@ -155,6 +155,15 @@ function App() {
       height: 500,
     },
   };
+  const CALENDAR = {
+    url: "https://baboolacalendar.netlify.app",
+    title: "Calendar",
+    icon: "https://baboolacalendar.netlify.app/favicon.hires.png",
+    preferredWindowSize: {
+      width: 901,
+      height: 600,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -349,13 +358,14 @@ function App() {
             WEATHER,
             TERMINAL,
             CLOCK,
-            UNIT_CONVERTER,
+            CALENDAR,
             SHEETS,
             NOTES,
             TEXT_EDITOR,
             DICTIONARY,
             SIMPLY_PRESENT,
             MUSIC,
+            UNIT_CONVERTER,
             PASSWORD_GENERATOR,
             WEB_NAVIGATOR,
             TEXT_TO_SPEECH,
