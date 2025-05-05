@@ -164,6 +164,15 @@ function App() {
       height: 610,
     },
   };
+  const GAMES = {
+    url: "https://baboolagames.netlify.app",
+    title: "Games",
+    icon: "https://baboolagames.netlify.app/favicon.hires.png",
+    preferredWindowSize: {
+      width: 1201,
+      height: 640,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -374,6 +383,7 @@ function App() {
             CAMERA,
             SETTINGS,
             APP_INSTALLER,
+            GAMES,
           ]}
         />
       </Show>

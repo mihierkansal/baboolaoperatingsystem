@@ -203,7 +203,7 @@ export function Settings() {
         <img src="/logo.png" height={50} />
 
         <h4>Baboola OS</h4>
-        <h5>Version 1.0.0</h5>
+        <h5>Version 1.5.2</h5>
         <p>
           {" "}
           <a target="_blank" href="https://github.com/mihierkansal">

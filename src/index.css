@@ -226,7 +226,7 @@ button,
     flex-grow: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     @media (min-width: 1500px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
     & > div {
       height: 8rem;
@@ -258,7 +258,7 @@ button,
       }
 
       @media (min-width: 1500px) {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
       & div {
         transition: all 0.1s;
