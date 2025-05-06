@@ -22,6 +22,19 @@ export enum NativeApp {
   Settings,
   Terminal,
   Installer,
+  Files,
+}
+
+export interface FolderFile {
+  name: string;
+  content: string;
+  id: string;
+}
+export interface Folder {
+  name: string;
+  files: FolderFile[];
+  subfolders: Folder[];
+  id: string;
 }
 
 export interface UserProfile {
@@ -30,4 +43,5 @@ export interface UserProfile {
   passwordHash?: string;
   wallpaper?: string;
   customApps?: AppObject[];
+  filesFolders?: Folder[];
 }

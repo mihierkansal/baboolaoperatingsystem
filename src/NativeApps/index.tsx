@@ -3,6 +3,7 @@ import { AppObject, NativeApp } from "../types";
 import { Settings } from "./Settings";
 import { Terminal } from "./Terminal";
 import { AppInstaller } from "./AddApps";
+import { Files } from "./Files";
 
 export function NativeAppView(props: { app: AppObject }) {
   return (
@@ -15,6 +16,9 @@ export function NativeAppView(props: { app: AppObject }) {
       </Match>
       <Match when={props.app.mainViewNativeApp === NativeApp.Installer}>
         <AppInstaller />
+      </Match>
+      <Match when={props.app.mainViewNativeApp === NativeApp.Files}>
+        <Files />
       </Match>
     </Switch>
   );

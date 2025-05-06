@@ -184,6 +184,16 @@ function App() {
     title: "System",
     icon: "/gear.svg",
   };
+  const FILES: AppObject = {
+    mainViewNativeApp: NativeApp.Files,
+
+    preferredWindowSize: {
+      width: 901,
+      height: 500,
+    },
+    title: "Files",
+    icon: "/folder.png",
+  };
   const APP_INSTALLER: AppObject = {
     mainViewNativeApp: NativeApp.Installer,
 
@@ -383,6 +393,7 @@ function App() {
             CAMERA,
             SETTINGS,
             APP_INSTALLER,
+            FILES,
             GAMES,
           ]}
         />
