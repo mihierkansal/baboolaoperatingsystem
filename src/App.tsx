@@ -173,6 +173,15 @@ function App() {
       height: 640,
     },
   };
+  const PHOTO_EDITOR = {
+    url: "https://baboolaphotoeditor.netlify.app",
+    title: "Photo Editor",
+    icon: "https://baboolaphotoeditor.netlify.app/favicon.hires.png",
+    preferredWindowSize: {
+      width: 1201,
+      height: 640,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -395,6 +404,7 @@ function App() {
             APP_INSTALLER,
             FILES,
             GAMES,
+            PHOTO_EDITOR,
           ]}
         />
       </Show>

@@ -198,6 +198,7 @@ button,
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 9999;
   background: linear-gradient(to bottom, #333333f9, #222222f9);
   height: 100vh;
   width: 100vw;
