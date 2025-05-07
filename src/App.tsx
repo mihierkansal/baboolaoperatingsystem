@@ -312,7 +312,19 @@ function App() {
               launchpadOpen[1](true);
             }}
           >
-            <span>🚀&#xFE0E Apps</span>
+            <span>
+              <span
+                style={{
+                  "letter-spacing": "-10px",
+                  display: "flex",
+                  "font-size": "1.5rem",
+                  "margin-bottom": "-1px",
+                }}
+              >
+                ⠇⠇⠇
+              </span>
+              Apps
+            </span>
           </button>
 
           <For each={openWindows[0]()}>
