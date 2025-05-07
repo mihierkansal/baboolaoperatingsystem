@@ -182,6 +182,15 @@ function App() {
       height: 640,
     },
   };
+  const LIVE_CODE_EDITOR = {
+    url: "https://baboolalivecodeeditor.netlify.app",
+    title: "Live Code Editor",
+    icon: "https://baboolalivecodeeditor.netlify.app/favicon.png",
+    preferredWindowSize: {
+      width: 1201,
+      height: 600,
+    },
+  };
 
   const SETTINGS: AppObject = {
     mainViewNativeApp: NativeApp.Settings,
@@ -417,6 +426,7 @@ function App() {
             FILES,
             GAMES,
             PHOTO_EDITOR,
+            LIVE_CODE_EDITOR,
           ]}
         />
       </Show>
