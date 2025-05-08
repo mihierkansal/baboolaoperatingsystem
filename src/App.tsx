@@ -370,7 +370,7 @@ function App() {
           <PinnedApps pinnedAppsList={pinned} openWindowsList={openWindows} />
 
           <button class="iconbutton" onClick={() => location.reload()}>
-            <span>⏻</span>
+            <span>↻</span>
           </button>
           <button
             class={calendarOpen[0]() ? "active" : ""}
