@@ -23,6 +23,7 @@ export enum NativeApp {
   Terminal,
   Installer,
   Files,
+  TextEditor,
 }
 
 export interface FolderFile {

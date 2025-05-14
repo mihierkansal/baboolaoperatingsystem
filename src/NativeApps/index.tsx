@@ -4,6 +4,7 @@ import { Settings } from "./Settings";
 import { Terminal } from "./Terminal";
 import { AppInstaller } from "./AddApps";
 import { Files } from "./Files";
+import TextEditor from "baboolatexteditor/src/App.tsx";
 
 export function NativeAppView(props: { app: AppObject }) {
   return (
@@ -19,6 +20,14 @@ export function NativeAppView(props: { app: AppObject }) {
       </Match>
       <Match when={props.app.mainViewNativeApp === NativeApp.Files}>
         <Files />
+      </Match>
+      <Match when={props.app.mainViewNativeApp === NativeApp.Files}>
+        <Files />
+      </Match>
+      <Match when={props.app.mainViewNativeApp === NativeApp.TextEditor}>
+        <div class="baboolastyles">
+          <TextEditor />
+        </div>
       </Match>
     </Switch>
   );

@@ -95,7 +95,7 @@ function App() {
     icon: "https://baboolanotes.netlify.app/Picture1.png",
   };
   const TEXT_EDITOR = {
-    url: "https://baboolatexteditor.netlify.app",
+    mainViewNativeApp: NativeApp.TextEditor,
     title: "Text Editor",
     icon: "https://baboolatexteditor.netlify.app/icon.hires.png",
   };
