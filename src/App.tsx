@@ -99,6 +99,11 @@ function App() {
     title: "Text Editor",
     icon: "https://baboolatexteditor.netlify.app/icon.hires.png",
   };
+  const NEWS = {
+    url: "https://baboolanewsandfinance.netlify.app",
+    title: "News & Finance",
+    icon: "https://baboolanewsandfinance.netlify.app/favicon.hires.png",
+  };
   const MUSIC = {
     url: "https://baboolamusicplayer.netlify.app",
     title: "Music Player",
@@ -425,6 +430,7 @@ function App() {
             APP_INSTALLER,
             FILES,
             GAMES,
+            NEWS,
             PHOTO_EDITOR,
             LIVE_CODE_EDITOR,
           ]}

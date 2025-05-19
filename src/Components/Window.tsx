@@ -22,6 +22,7 @@ export function Window(props: {
   if (!document.getElementById(props.id)) {
     render(() => {
       const isDragging = createSignal(false);
+      const isResizing = createSignal(false);
 
       const snapType = createSignal<
         "snapleft" | "snapright" | "maximized" | ""
@@ -36,7 +37,6 @@ export function Window(props: {
       let dragHandle!: HTMLDivElement;
 
       onMount(() => {
-        console.log(props.app);
         dragHandle.addEventListener("mousedown", mouseDown);
 
         document.addEventListener("mousemove", mouseMove);
@@ -44,18 +44,15 @@ export function Window(props: {
         document.addEventListener("mouseup", mouseUp);
 
         if (props.app.preferredWindowSize) {
-          console.log(props.app.preferredWindowSize, "PWS");
           container.style.width = props.app.preferredWindowSize.width + "px";
           container.style.height = props.app.preferredWindowSize.height + "px";
         }
 
         container.style.left = generateRandomNumberFrom(20, 60) + "px";
         container.style.top = generateRandomNumberFrom(20, 60) + "px";
-        6;
+
         createEffect(() => {
-          if (!props.hidden) {
-            focusWin();
-          }
+          if (!props.hidden) focusWin();
         });
       });
 
@@ -144,16 +141,53 @@ export function Window(props: {
                 <iframe
                   allow="camera; microphone; display-capture; autoplay; clipboard-write;"
                   style={{
-                    "z-index": isDragging[0]() ? "-1" : "2",
+                    "z-index":
+                      isDragging[0]() || isResizing[0]() || !props.focused
+                        ? "-1"
+                        : "2",
                   }}
                   ref={frame}
                   src={props.app.url}
                 ></iframe>
               </Show>
             </div>
+            <div
+              ref={(el) => {
+                el.addEventListener("mousedown", resizeMarkerMouseDown);
+                window.addEventListener("mouseup", resizeMarkerMouseUp);
+                window.addEventListener("mousemove", resizeMarkerMouseMove);
+
+                onCleanup(() => {
+                  el.removeEventListener("mousedown", resizeMarkerMouseDown);
+                  window.removeEventListener(
+                    "mousemove",
+                    resizeMarkerMouseMove
+                  );
+                  window.removeEventListener("mouseup", resizeMarkerMouseUp);
+                });
+              }}
+              class="resize-marker"
+            >
+              ⇲
+            </div>
           </div>
         </>
       );
+
+      function resizeMarkerMouseMove(e: MouseEvent) {
+        if (!isResizing[0]()) return;
+        if (snapType[0]()) return;
+        container.style.width = container.clientWidth + e.movementX + "px";
+        container.style.height = container.clientHeight + e.movementY + "px";
+      }
+
+      function resizeMarkerMouseUp() {
+        isResizing[1](false);
+      }
+
+      function resizeMarkerMouseDown() {
+        isResizing[1](true);
+      }
 
       function mouseDown(e: MouseEvent) {
         isDragging[1](true);
