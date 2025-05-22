@@ -40,9 +40,20 @@ function App() {
       height: 500,
     },
   };
+
+  const SCIENTIFIC_CALCULATOR = {
+    url: "https://baboolascientificcalculator.netlify.app",
+    title: "Scientific Calculator",
+    icon: "https://baboolascientificcalculator.netlify.app/favicon.png",
+    preferredWindowSize: {
+      width: 500,
+      height: 700,
+    },
+  };
+
   const CALCULATOR = {
     url: "https://baboolacalculator.netlify.app",
-    title: "Calculator",
+    title: "Basic Calculator",
     icon: "https://baboolacalculator.netlify.app/icon.png",
     preferredWindowSize: {
       width: 500,
@@ -404,6 +415,7 @@ function App() {
           openWindows={openWindows}
           pinnedApps={pinned}
           preinstalledApps={[
+            SCIENTIFIC_CALCULATOR,
             PAINT,
             SOUND_REC,
             CHAT,
@@ -444,7 +456,7 @@ function App() {
     openWindowsList: Signal<WindowObject[]>;
   }) {
     if (!props.pinnedAppsList[0]()) {
-      [PAINT, CALCULATOR, SHEETS, WEATHER].forEach((app) => {
+      [PAINT, SCIENTIFIC_CALCULATOR, SHEETS, WEATHER].forEach((app) => {
         props.pinnedAppsList[1]((v) => {
           if (!v) v = [];
           v.push(app);

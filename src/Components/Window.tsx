@@ -166,9 +166,14 @@ export function Window(props: {
                   window.removeEventListener("mouseup", resizeMarkerMouseUp);
                 });
               }}
+              style={{
+                "font-size": "0.5rem",
+                "padding-right": "0.15rem",
+                "padding-bottom": "0.15rem",
+              }}
               class="resize-marker"
             >
-              ⇲
+              {/* ↘ */}◢
             </div>
           </div>
         </>
