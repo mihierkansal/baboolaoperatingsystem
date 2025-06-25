@@ -37,7 +37,12 @@ export interface Folder {
   subfolders: Folder[];
   id: string;
 }
-
+export interface Shortcut {
+  name: string;
+  app?: AppObject;
+  filename?: string;
+  folderPath?: string;
+}
 export interface UserProfile {
   name?: string;
   profilePic?: string;
@@ -45,4 +50,5 @@ export interface UserProfile {
   wallpaper?: string;
   customApps?: AppObject[];
   filesFolders?: Folder[];
+  desktopShortcuts?: Shortcut[];
 }

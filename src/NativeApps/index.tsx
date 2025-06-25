@@ -7,6 +7,7 @@ import { Files } from "./Files";
 import TextEditor from "baboolatexteditor/src/App.tsx";
 
 export function NativeAppView(props: { app: AppObject }) {
+  console.log(props.app);
   return (
     <Switch>
       <Match when={props.app.mainViewNativeApp === NativeApp.Settings}>
@@ -19,10 +20,7 @@ export function NativeAppView(props: { app: AppObject }) {
         <AppInstaller />
       </Match>
       <Match when={props.app.mainViewNativeApp === NativeApp.Files}>
-        <Files />
-      </Match>
-      <Match when={props.app.mainViewNativeApp === NativeApp.Files}>
-        <Files />
+        <Files {...props.app.nativeAppProps} />
       </Match>
       <Match when={props.app.mainViewNativeApp === NativeApp.TextEditor}>
         <div class="baboolastyles">

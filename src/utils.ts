@@ -1,5 +1,5 @@
 import { Signal, createSignal } from "solid-js";
-import { AppObject, UserProfile, WindowObject } from "./types";
+import { AppObject, Shortcut, UserProfile, WindowObject } from "./types";
 import CryptoJS from "crypto-js";
 
 export const wallpapers = [
@@ -152,7 +152,12 @@ export function applyWallpaper() {
     document.body.style.backgroundImage = `url('${wallpapers[0]}')`;
   }
 }
-
+export function updateShortcutsInLS(newShortcuts: Shortcut[]) {
+  updateUserProfile({
+    ...getUserProfile(),
+    desktopShortcuts: newShortcuts,
+  });
+}
 export function downloadTextFile(filename: string, content: string) {
   const element = document.createElement("a");
   const blob = new Blob([content], { type: "text/plain" });

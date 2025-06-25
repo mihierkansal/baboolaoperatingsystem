@@ -6,7 +6,9 @@ import {
   getUserProfile,
   removeAppFromLocalStorePinned,
   updateUserProfile,
+  updateShortcutsInLS,
 } from "../utils";
+import { shortcuts } from "../App";
 
 export function Launchpad(props: {
   preinstalledApps: AppObject[];
@@ -59,6 +61,26 @@ export function Launchpad(props: {
                       }}
                     >
                       <span>📌&#xFE0E;</span>
+                    </button>
+                    <button
+                      title="Create Desktop Shortcut"
+                      class="action"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        shortcuts[1]((v) => {
+                          v.push({
+                            name: app.title,
+                            app: app,
+                          });
+
+                          return [...v];
+                        });
+
+                        updateShortcutsInLS([...shortcuts[0]()]);
+                        props.visibility[1](false);
+                      }}
+                    >
+                      <span>🏠&#xFE0E;</span>
                     </button>
                     <Show when={app.isCustom}>
                       <button

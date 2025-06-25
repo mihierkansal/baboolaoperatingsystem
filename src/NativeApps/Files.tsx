@@ -7,8 +7,14 @@ import {
   Show,
 } from "solid-js";
 import { Folder, FolderFile } from "../types";
-import { downloadTextFile, getUserProfile, updateUserProfile } from "../utils";
+import {
+  downloadTextFile,
+  getUserProfile,
+  updateShortcutsInLS,
+  updateUserProfile,
+} from "../utils";
 import { promptUser } from "../Components/Dialogs";
+import { shortcuts } from "../App";
 
 const INITIAL_FOLDERS: Folder[] = [
   {
@@ -55,7 +61,7 @@ const INITIAL_FOLDERS: Folder[] = [
     ],
   },
 ];
-export function Files() {
+export function Files(props: any) {
   let profile = getUserProfile();
   const foldersAndFiles = createSignal<Folder[]>(profile?.filesFolders || []);
 
@@ -70,13 +76,30 @@ export function Files() {
     });
   });
 
-  const selectedFolderID = createSignal(foldersAndFiles[0]()[0].id);
+  const foundFolder = props.folderPath
+    ? findFolderByPath(
+        foldersAndFiles[0](),
+        "Filesystem Root/" + props.folderPath
+      )
+    : undefined;
+
+  const selectedFolderID = createSignal(
+    foundFolder?.id || foldersAndFiles[0]()[0].id
+  );
 
   const selectedFolder = createMemo(() => {
     console.log("memoran");
     return findFolderById(foldersAndFiles[0](), selectedFolderID[0]());
   });
-  const preview = createSignal<FolderFile>();
+  const preview = createSignal<FolderFile | undefined>(
+    selectedFolder()?.files.find((file) => file.name === props.filename)
+  );
+
+  if (!foundFolder && props.folderPath) {
+    alert(
+      "BaboolaOS cannot find the path specified. Path: " + props.folderPath
+    );
+  }
 
   return (
     <div class="app-container">
@@ -177,6 +200,30 @@ export function Files() {
                         Rename
                       </div>
                       <div
+                        style={{
+                          "white-space": "nowrap",
+                        }}
+                        onClick={() => {
+                          contextMenuVis[1](false);
+                          shortcuts[1]((v) => {
+                            v.push({
+                              name: subfolder.name,
+                              folderPath: pathForFolder(
+                                // Don't start in filesystem root
+                                foldersAndFiles[0]()[0].subfolders,
+                                subfolder
+                              )!,
+                            });
+
+                            return [...v];
+                          });
+
+                          updateShortcutsInLS(shortcuts[0]());
+                        }}
+                      >
+                        Make shortcut
+                      </div>
+                      <div
                         onClick={() => {
                           updateFoldersAndFiles((v) => {
                             const folder = findFolderById(
@@ -240,6 +287,31 @@ export function Files() {
                         }}
                       >
                         Rename
+                      </div>
+                      <div
+                        style={{
+                          "white-space": "nowrap",
+                        }}
+                        onClick={() => {
+                          contextMenuVis[1](false);
+                          shortcuts[1]((v) => {
+                            v.push({
+                              name: file().name,
+                              folderPath: pathForFolder(
+                                // Don't start in filesystem root
+                                foldersAndFiles[0]()[0].subfolders,
+                                selectedFolder()!
+                              )!,
+                              filename: file().name,
+                            });
+
+                            return [...v];
+                          });
+
+                          updateShortcutsInLS(shortcuts[0]());
+                        }}
+                      >
+                        Make shortcut
                       </div>
                       <div
                         onClick={() => {
@@ -374,6 +446,55 @@ export function Files() {
       return updateFn(oldFF);
     });
   }
+}
+
+function pathForFolder(folders: Folder[], folder: Folder): string | null {
+  function search(
+    currentFolders: Folder[],
+    currentPath: string
+  ): string | null {
+    for (const f of currentFolders) {
+      const newPath = currentPath ? `${currentPath}/${f.name}` : f.name;
+
+      if (f.id === folder.id) {
+        return newPath;
+      }
+
+      const subfolderPath = search(f.subfolders, newPath);
+      if (subfolderPath) {
+        return subfolderPath;
+      }
+    }
+
+    return null;
+  }
+
+  return search(folders, "");
+}
+
+function findFolderByPath(folders: Folder[], path: string): Folder | null {
+  const pathSegments = path.split("/").filter((segment) => segment.length > 0);
+
+  function search(currentFolders: Folder[], index: number): Folder | null {
+    if (index >= pathSegments.length) {
+      return null;
+    }
+
+    const folderName = pathSegments[index];
+
+    for (const folder of currentFolders) {
+      if (folder.name === folderName) {
+        if (index === pathSegments.length - 1) {
+          return folder;
+        }
+        return search(folder.subfolders, index + 1);
+      }
+    }
+
+    return null;
+  }
+
+  return search(folders, 0);
 }
 
 function findFileById(

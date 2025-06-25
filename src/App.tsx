@@ -1,19 +1,31 @@
 import { createSignal, For, Show, Signal } from "solid-js";
 import "./index.css";
 import { Window } from "./Components/Window";
-import { WindowObject, WindowID, AppObject, NativeApp } from "./types";
+import {
+  WindowObject,
+  WindowID,
+  AppObject,
+  NativeApp,
+  Shortcut,
+} from "./types";
 import {
   addAppToLocalStorePinned,
   applyWallpaper,
   formatDateAsTime,
   formatDateToLocalISO,
   getPinnedApps,
+  getUserProfile,
   launchApp,
   removeAppFromLocalStorePinned,
 } from "./utils";
 import { Launchpad } from "./Components/Launchpad";
 import { Calendar } from "./Components/CalendarWidget";
 import { LockScreen } from "./Components/LockScreen";
+import { DesktopShortcuts } from "./Components/DesktopShortcuts";
+
+export const shortcuts = createSignal<Shortcut[]>(
+  getUserProfile()?.desktopShortcuts || []
+);
 
 function App() {
   // Preinstalled
@@ -304,6 +316,7 @@ function App() {
               <div>{Math.round(batteryLevel[0]() * 100) + "%"} Charged</div>
             </div>
           </div>
+          <DesktopShortcuts shortcuts={shortcuts} openWindows={openWindows} />
         </Show>
         <For each={openWindows[0]()}>
           {(win) => {
